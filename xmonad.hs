@@ -360,5 +360,6 @@ defaults = defaultConfig {
     -- hooks, layouts
     layoutHook         = smartBorders $ myLayout,
     manageHook         = myManageHook,
-    startupHook        = myStartupHook
+    startupHook        = myStartupHook,
+    handleEventHook    = fullscreenEventHook
 }
