@@ -7,7 +7,7 @@ Config {
     font = "xft:Fixed-8",
     bgColor = "#000000",
     fgColor = "#ffffff",
-    position = Static { xpos = 1920, ypos = 0, width = 1800, height = 16 },
+    position = Static { xpos = 1680, ypos = 0, width = 1560, height = 16 },
     lowerOnStart = True,
     commands = [
         Run Weather "KNYC" ["-t","<tempF>F <skyCondition>","-L","64","-H","77","-n","#CEFFAC","-h","#FFB6B0","-l","#96CBFE"] 36000,
