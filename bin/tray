@@ -7,4 +7,4 @@
 # This is setup to display on dual 1680x1050 monitors, with the right-side
 # monitor as primary.  Adjust margin as necessary for other resolutions/setups.
 trayer --edge top --align right --margin 0 --width 120 --widthtype pixel --height 12 \
-    --padding 1 --tint 0x000000 --transparent true
+    --padding 1 --tint 0x002b36 --alpha 0 --transparent true
