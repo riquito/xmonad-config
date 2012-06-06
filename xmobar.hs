@@ -4,8 +4,8 @@
 
 -- This is setup for dual 1680x1050 monitors, with the right monitor as primary
 Config {
-    font = "xft:Fixed-8",
-    bgColor = "#000000",
+    font = "xft:Dejavu Sans Mono:pixelsize=12:antialias=true:style=bold",
+    bgColor = "#002b36",
     fgColor = "#ffffff",
     position = Static { xpos = 1680, ypos = 0, width = 1560, height = 16 },
     lowerOnStart = True,
