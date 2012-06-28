@@ -57,9 +57,11 @@ myManageHook = composeAll
     , resource  =? "gpicview"       --> doFloat
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "MPlayer"        --> doFloat
-    , resource  =? "skype"          --> doFloat
+    -- , resource  =? "skype"          --> doFloat
     , className =? "VirtualBox"     --> doShift "4:vm"
     , className =? "Xchat"          --> doShift "5:media"
+    , resource  =? "Komodo_find2"   --> doFloat
+    , resource  =? "Downloads"      --> doFloat
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
 
