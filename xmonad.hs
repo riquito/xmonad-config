@@ -31,7 +31,7 @@ myTerminal = "/usr/bin/urxvt"
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 --
-myWorkspaces = ["1:term","2:web","3:code","4:vm","5:media"] ++ map show [6..9]
+myWorkspaces = ["1:term","2:firefox","3:chromium","4:chat","5:code"] ++ map show [6..9]
  
 
 ------------------------------------------------------------------------
@@ -49,17 +49,20 @@ myWorkspaces = ["1:term","2:web","3:code","4:vm","5:media"] ++ map show [6..9]
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "Chromium"       --> doShift "2:web"
+    [ className =? "Chromium"       --> doShift "3:chromium"
     , resource  =? "desktop_window" --> doIgnore
     , className =? "Galculator"     --> doFloat
     , className =? "Gimp"           --> doFloat
-    , className =? "Google-chrome"  --> doShift "2:web"
+    , className =? "Google-chrome"  --> doShift "3:chromium"
     , resource  =? "gpicview"       --> doFloat
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "MPlayer"        --> doFloat
     -- , resource  =? "skype"          --> doFloat
-    , className =? "VirtualBox"     --> doShift "4:vm"
-    , className =? "Xchat"          --> doShift "5:media"
+    , className =? "Xchat"          --> doShift "4:chat"
+    , title     =? "Downloads"      --> doFloat
+    , title     =? "Firefox Preferences" --> doFloat
+    , title     =? "Preferences" --> doFloat
+    , title     =? "Find" --> doFloat
     , resource  =? "Komodo_find2"   --> doFloat
     , resource  =? "Downloads"      --> doFloat
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
@@ -333,8 +336,10 @@ main = do
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
-          , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
-          , ppSep = "   "}
+          , ppCurrent = xmobarColor "#002b36" "#ffffff"
+          , ppSep = " - "
+          , ppWsSep = " "
+       }
       , manageHook = manageDocks <+> myManageHook
       , startupHook = setWMName "LG3D"
   }
