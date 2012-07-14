@@ -124,7 +124,14 @@ myBorderWidth = 1
 -- "windows key" is usually mod4Mask.
 --
 myModMask = mod1Mask
- 
+
+-- Non-numeric num pad keys, sorted by number
+numPadKeys = [ 
+    xK_KP_End,  xK_KP_Down,  xK_KP_Page_Down -- 1, 2, 3
+  , xK_KP_Left, xK_KP_Begin, xK_KP_Right   -- 4, 5, 6
+  , xK_KP_Home, xK_KP_Up,    xK_KP_Page_Up    -- 7, 8, 9
+  , xK_KP_Insert] -- 0 
+
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   ----------------------------------------------------------------------
   -- Custom key bindings
@@ -279,6 +286,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
       | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+  ++
+
+  -- numpad[1..9], Switch to workspace N
+  -- shift-numpad[1..9], Move client to workspace N
+  [((m, k), windows $ f i)
+      | (i, k) <- zip (XMonad.workspaces conf) numPadKeys
+      , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
  
  
 ------------------------------------------------------------------------
