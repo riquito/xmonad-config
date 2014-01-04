@@ -356,7 +356,12 @@ main = do
           , ppWsSep = " "
        }
       , manageHook = manageDocks <+> myManageHook
-      , startupHook = setWMName "LG3D"
+      -- 'LG3D' was there to solve problems with version of openjdk that
+      -- didn't respects _JAVA_AWT_WM_NONREPARENTING`.
+      -- Modern GTK applications (like gnome-control-panel) do not like
+      -- it and do not refresh anymore, so I've commented it
+      --
+      --, startupHook = setWMName "LG3D"
   }
  
 
